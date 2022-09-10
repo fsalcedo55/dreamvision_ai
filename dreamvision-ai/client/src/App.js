@@ -6,6 +6,8 @@ import { getLoggedIn, logout } from './services/auth';
 import routes from './config/routes';
 import * as USER_HELPERS from './utils/userToken';
 
+import Dashboard from "./pages/Dashboard"
+
 export default function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,6 +59,8 @@ export default function App() {
           {routes({ user, authenticate, handleLogout }).map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
+          <Route path='/dashboard' element={<Dashboard/>}/>
+        
         </Routes>
       </div>
     </div>
