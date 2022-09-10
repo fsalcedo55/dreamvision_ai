@@ -1,18 +1,18 @@
-const router = require("express").Router();
-const LocalStorage = require("node-localstorage").LocalStorage;
-const fileUploader = require("../config/cloudinary.setup.js");
+const router = require('express').Router();
+const LocalStorage = require('node-localstorage').LocalStorage;
+const fileUploader = require('../config/cloudinary.setup.js');
 
-const stability = require("stability-ts");
+const stability = require('stability-ts');
 
-const mongoose = require("mongoose");
-const User = require("../models/User.model");
-const Session = require("../models/Session.model");
+const mongoose = require('mongoose');
+const User = require('../models/User.model');
+const Session = require('../models/Session.model');
 
 // const isLoggedOut = require('../middleware/isLoggedOut');
 // const isLoggedIn = require('../middleware/isLoggedIn');
 
-router.post("/saveImaginedImage", async (req, res) => {
-  const localStoragePath = new LocalStorage("./scratch")._location;
+router.post('/saveImaginedImage', async (req, res) => {
+  const localStoragePath = new LocalStorage('./scratch')._location;
   const { userPrompt } = req.body;
   const { userId } = req.body.userId;
 
@@ -22,14 +22,13 @@ router.post("/saveImaginedImage", async (req, res) => {
     outDir: localStoragePath,
   });
 
-  api.on("image", async ({ buffer, filePath }) => {
+  api.on('image', async ({ buffer, filePath }) => {
     try {
       const pathToImageInCloudinary = await fileUploader.uploader.upload(
         filePath
       );
 
       const preparedUserId = mongoose.Types.ObjectId(userId);
-
       const user = await User.findByIdAndUpdate(
         preparedUserId,
         {
@@ -41,8 +40,8 @@ router.post("/saveImaginedImage", async (req, res) => {
     } catch (err) {}
   });
 
-  api.on("end", (data) => {
-    console.log("Generating Complete", data);
+  api.on('end', (data) => {
+    console.log('Generating Complete', data);
   });
 });
 
