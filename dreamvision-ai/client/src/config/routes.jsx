@@ -4,7 +4,9 @@ import Login from '../pages/LogIn';
 import Signup from '../pages/Signup';
 import ProtectedPage from '../pages/ProtectedPage';
 import * as PATHS from '../utils/paths';
+
 import ProfilePage from '../pages/ProfilePage';
+
 import Dashboard from '../pages/Dashboard';
 
 const routes = (props) => {
@@ -32,17 +34,17 @@ const routes = (props) => {
       ),
     },
     {
-      path: PATHS.PROFILEPAGE,
+      path: PATHS.DASHBOARD,
       element: user ? (
-        <ProfilePage {...props} />
+        <Dashboard {...props} />
       ) : (
         <Navigate to={PATHS.LOGINPAGE} replace />
       ),
     },
     {
-      path: PATHS.DASHBOARDPAGE,
+      path: PATHS.PROFILEPAGE,
       element: user ? (
-        <Dashboard {...props} />
+        <ProfilePage {...props} />
       ) : (
         <Navigate to={PATHS.LOGINPAGE} replace />
       ),
