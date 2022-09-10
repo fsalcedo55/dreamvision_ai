@@ -1,24 +1,23 @@
 import '../App.css';
 import React, { useState } from 'react';
-import { getAllTheEntities } from '../services/iamginator-service';
+import { getUserImages } from '../services/iamginator-service';
 import { useEffect } from 'react';
 
-function HomePage(props) {
-  const [allTheImages, setAllTheImages] = useState([]);
+function ProfilePage(props) {
+  const [userImages, setUserImages] = useState([]);
 
   useEffect(() => {
-    console.log('effect in use');
-    const getAllTheImages = async () => {
-      const allImages = await getAllTheEntities();
-      setAllTheImages(allImages.data.allTheImages.reverse());
+    const getAllUserImages = async () => {
+      const images = (await getUserImages(props.user.username)).data.userImages;
+      setUserImages(images);
     };
-    getAllTheImages();
-  }, []);
+    getAllUserImages();
+  }, [props.user.username]);
 
   return (
     <React.Fragment>
       <div className='grid grid-cols-5 gap-4'>
-        {allTheImages?.map((image) => {
+        {userImages?.map((image) => {
           return (
             <img
               key={image}
@@ -33,4 +32,4 @@ function HomePage(props) {
   );
 }
 
-export default HomePage;
+export default ProfilePage;

@@ -10,11 +10,11 @@ function ProtectedPage(props) {
   const [userImages, setUserImages] = useState([]);
   console.log({ props });
   useEffect(() => {
-    const getAllUserImages = async () => {
+    const getLastUserImage = async () => {
       const images = (await getUserImages(props.user.username)).data.userImages;
-      setUserImages(images);
+      setUserImages([images[0]]);
     };
-    getAllUserImages();
+    getLastUserImage();
   }, [props.user.username]);
 
   const onChangeHandler = (e) => {
