@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { login } from "../services/auth";
-import { useNavigate } from "react-router-dom";
-import "./Signup";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+import React, { useState } from 'react';
+import { login } from '../services/auth';
+import { useNavigate } from 'react-router-dom';
+import './Signup';
+import * as PATHS from '../utils/paths';
+import * as USER_HELPERS from '../utils/userToken';
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
   const { username, password } = form;
   const [error, setError] = useState(null);
@@ -28,52 +28,60 @@ export default function LogIn({ authenticate }) {
     };
     login(credentials).then((res) => {
       if (!res.status) {
-        return setError({ message: "Invalid credentials" });
+        return setError({ message: 'Invalid credentials' });
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
+      navigate(PATHS.PROTECTEDPAGE);
     });
   }
 
   return (
-    <div>
-      <h1>Log In</h1>
-      <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
-        <input
-          id="input-username"
-          type="text"
-          name="username"
-          placeholder="username"
-          value={username}
-          onChange={handleInputChange}
-          required
-        />
-
-        <label htmlFor="input-password">Password</label>
-        <input
-          id="input-password"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength="8"
-        />
-
-        {error && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
+    <div className='flex items-center justify-center min-h-screen'>
+      <div className='flex-col border-4 h-80 w-80 rounded-3xl align-center'>
+        <h1 className='p-4 font-extrabold xt-2xl text-pink'>Dreamvision</h1>
+        <form onSubmit={handleFormSubmission} className='p-8 signup__form'>
+          <div className='p-4'>
+            <input
+              id='input-username'
+              type='text'
+              name='username'
+              placeholder='username'
+              value={username}
+              onChange={handleInputChange}
+              required
+              className='rounded-lg'
+            />
           </div>
-        )}
-
-        <button className="button__submit" type="submit">
-          Submit
-        </button>
-      </form>
+          <div>
+            <input
+              id='input-password'
+              type='password'
+              name='password'
+              placeholder='Password'
+              value={password}
+              onChange={handleInputChange}
+              required
+              minLength='8'
+              className='rounded-lg'
+            />
+          </div>
+          {error && (
+            <div className='error-block'>
+              <p>There was an error submiting the form:</p>
+              <p>{error.message}</p>
+            </div>
+          )}
+          <div className='p-4'>
+            <button
+              className='h-12 text-white bg-pink w-52 rounded-2xl'
+              type='submit'
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
