@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 function HomePage(props) {
   const [allTheImages, setAllTheImages] = useState([]);
+  // const [currentImage, setCurrentImage] = useState();
 
   useEffect(() => {
     console.log('effect in use');
@@ -25,6 +26,7 @@ function HomePage(props) {
               src={image}
               alt='all-the-images'
               className='w-full h-full rounded-xl'
+              // onClick={currentImage}
             />
           );
         })}
