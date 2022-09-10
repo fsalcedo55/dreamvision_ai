@@ -1,10 +1,21 @@
 import '../App.css';
-import React, { useState } from 'react';
-import { saveImaginedImage } from '../services/iamginator-service';
+import React, { useState, useEffect } from 'react';
+import {
+  saveImaginedImage,
+  getUserImages,
+} from '../services/iamginator-service';
 
-function HomePage(props) {
+function ProtectedPage(props) {
   const [imaginedText, setImaginedText] = useState('');
   const [userImages, setUserImages] = useState([]);
+  console.log({ props });
+  useEffect(() => {
+    const getAllUserImages = async () => {
+      const images = (await getUserImages(props.user.username)).data.userImages;
+      setUserImages(images);
+    };
+    getAllUserImages();
+  }, [props.user.username]);
 
   const onChangeHandler = (e) => {
     const value = e.target.value;
@@ -52,4 +63,4 @@ function HomePage(props) {
   );
 }
 
-export default HomePage;
+export default ProtectedPage;

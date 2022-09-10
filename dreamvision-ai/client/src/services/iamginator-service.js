@@ -32,9 +32,17 @@ export const saveImaginedImage = async (userPrompt, userId) => {
     .catch(internalServerError);
 };
 
-export const getAllTheEntities = async (userPrompt, userId) => {
+export const getAllTheEntities = async () => {
   return dreamVisionService
     .get('/getAllTheEntities')
+    .then(successStatus)
+    .catch(internalServerError);
+};
+
+export const getUserImages = async (username) => {
+  console.log({ username });
+  return dreamVisionService
+    .get(`/getAllImagesOfThisUser/${username}`)
     .then(successStatus)
     .catch(internalServerError);
 };

@@ -10,7 +10,7 @@ function HomePage(props) {
     console.log('effect in use');
     const getAllTheImages = async () => {
       const allImages = await getAllTheEntities();
-      setAllTheImages(allImages.data.allTheImages);
+      setAllTheImages(allImages.data.allTheImages.reverse());
     };
     getAllTheImages();
   }, []);
