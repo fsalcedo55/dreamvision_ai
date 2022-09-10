@@ -1,9 +1,10 @@
-import { Navigate } from "react-router-dom";
-import HomePage from "../pages/HomePage";
-import Login from "../pages/LogIn";
-import Signup from "../pages/Signup";
-import ProtectedPage from "../pages/ProtectedPage";
-import * as PATHS from "../utils/paths";
+import { Navigate } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
+import Login from '../pages/LogIn';
+import Signup from '../pages/Signup';
+import ProtectedPage from '../pages/ProtectedPage';
+import * as PATHS from '../utils/paths';
+import Dashboard from '../pages/Dashboard';
 
 const routes = (props) => {
   const { user } = props;
@@ -25,6 +26,14 @@ const routes = (props) => {
       path: PATHS.PROTECTEDPAGE,
       element: user ? (
         <ProtectedPage {...props} />
+      ) : (
+        <Navigate to={PATHS.LOGINPAGE} replace />
+      ),
+    },
+    {
+      path: PATHS.DASHBOARD,
+      element: user ? (
+        <Dashboard {...props} />
       ) : (
         <Navigate to={PATHS.LOGINPAGE} replace />
       ),
