@@ -32,7 +32,7 @@ export default function LogIn({ authenticate }) {
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.PROTECTEDPAGE);
+      navigate(PATHS.DASHBOARDPAGE);
     });
   }
 
