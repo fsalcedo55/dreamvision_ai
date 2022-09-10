@@ -22,6 +22,7 @@ function HomePage(props) {
     });
   };
 
+  console.log({ userImages });
   return (
     <React.Fragment>
       <div>
