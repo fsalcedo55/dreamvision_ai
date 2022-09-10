@@ -23,7 +23,7 @@ function ProfilePage(props) {
               key={image}
               src={image}
               alt='all-the-images'
-              className='w-full h-64 rounded-xl'
+              className='w-full h-full rounded-xl'
             />
           );
         })}
