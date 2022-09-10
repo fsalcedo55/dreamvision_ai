@@ -1,53 +1,27 @@
 import '../App.css';
 import React, { useState } from 'react';
-import { saveImaginedImage } from '../services/iamginator';
+import { getAllTheEntities } from '../services/iamginator-service';
+import { useEffect } from 'react';
 
 function HomePage(props) {
-  const [imaginedText, setImaginedText] = useState('');
-  const [userImages, setUserImages] = useState([]);
+  const [allTheImages, setAllTheImages] = useState([]);
 
-  const onChangeHandler = (e) => {
-    const value = e.target.value;
-    setImaginedText(value);
-  };
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    const { data } = await saveImaginedImage(imaginedText, {
-      userId: props.user._id,
-    });
-    const imageUrls = data.user.imaginedPics;
-    setImaginedText('');
-    setUserImages(() => {
-      return [...imageUrls].reverse();
-    });
-  };
+  useEffect(() => {
+    console.log('effect in use');
+    const getAllTheImages = async () => {
+      const allImages = await getAllTheEntities();
+      setAllTheImages(allImages.data.allTheImages);
+    };
+    getAllTheImages();
+  }, []);
 
-  console.log({ userImages });
   return (
     <React.Fragment>
       <div>
-        <div>
-          <form onSubmit={submitHandler}>
-            <label>
-              Your text
-              <input
-                type='text'
-                name='imaginedText'
-                onChange={onChangeHandler}
-                value={imaginedText}
-              />
-            </label>
-            <button type='submit'>Submit</button>
-          </form>
-        </div>
-      </div>
-      <div className='images-container'>
-        {userImages.length > 0 &&
-          userImages.map((imageUrl) => (
-            <div key={imageUrl}>
-              <img src={imageUrl} alt='users-pic' />
-            </div>
-          ))}
+        <h1> HOME PAGE</h1>
+        {allTheImages?.map((image) => {
+          return <img key={image} src={image} alt='all-the-images' />;
+        })}
       </div>
     </React.Fragment>
   );

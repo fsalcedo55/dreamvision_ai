@@ -1,8 +1,8 @@
 import '../App.css';
 import React, { useState } from 'react';
-import { saveImaginedImage } from '../services/iamginator';
+import { saveImaginedImage } from '../services/iamginator-service';
 
-const ProtectedPage = (props) => {
+function HomePage(props) {
   const [imaginedText, setImaginedText] = useState('');
   const [userImages, setUserImages] = useState([]);
 
@@ -50,6 +50,6 @@ const ProtectedPage = (props) => {
       </div>
     </React.Fragment>
   );
-};
+}
 
-export default ProtectedPage;
+export default HomePage;

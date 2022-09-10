@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 function internalServerError(err) {
   if (err.response && err.response.data && err.response.data.errorMessage) {
@@ -9,7 +9,7 @@ function internalServerError(err) {
   }
   return {
     status: false,
-    errorMessage: "Internal server error. Please check your server",
+    errorMessage: 'Internal server error. Please check your server',
   };
 }
 
@@ -21,13 +21,20 @@ function successStatus(res) {
 }
 
 // creates a basic url for every request in this file
-const authService = axios.create({
+const dreamVisionService = axios.create({
   baseURL: `${process.env.REACT_APP_SERVER_URL}/imagined-images`,
 });
 
 export const saveImaginedImage = async (userPrompt, userId) => {
-  return authService
-    .post("/saveImaginedImage", { userPrompt, userId })
+  return dreamVisionService
+    .post('/saveImaginedImage', { userPrompt, userId })
+    .then(successStatus)
+    .catch(internalServerError);
+};
+
+export const getAllTheEntities = async (userPrompt, userId) => {
+  return dreamVisionService
+    .get('/getAllTheEntities')
     .then(successStatus)
     .catch(internalServerError);
 };
