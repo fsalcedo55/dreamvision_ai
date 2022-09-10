@@ -5,9 +5,9 @@ import * as CONSTS from "../../utils/consts"
 
 const Navbar = (props) => {
   return (
-    <nav>
+    <nav className="flex items-center justify-between h-20">
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with IronLauncher
+        {CONSTS.CAPITALIZED_APP}
       </Link>
 
       <div className="nav__authLinks">

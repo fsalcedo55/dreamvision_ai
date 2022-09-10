@@ -2,7 +2,7 @@
 import "../App.css"
 
 function HomePage() {
-  return <div></div>
+  return <div className="min-h-screen bg-primary">hello</div>
 }
 
 export default HomePage
