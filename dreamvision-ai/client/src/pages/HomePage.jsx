@@ -9,6 +9,8 @@ function HomePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
 
+  console.log(allTheImages);
+
   useEffect(() => {
     console.log('effect in use');
     const getAllTheImages = async () => {
@@ -32,7 +34,10 @@ function HomePage(props) {
         <div className='grid grid-cols-5 gap-4'>
           {allTheImages?.map((image) => {
             return (
-              <div className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-900'>
+              <div
+                id='picture-div'
+                className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-white'
+              >
                 <img
                   key={image}
                   src={image}
