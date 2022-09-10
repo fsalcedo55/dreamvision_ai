@@ -40,43 +40,60 @@ export default function Signup({ authenticate }) {
   }
 
   return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleFormSubmission} className='auth__form'>
-        <label htmlFor='input-username'>Username</label>
-        <input
-          id='input-username'
-          type='text'
-          name='username'
-          placeholder='username'
-          value={username}
-          onChange={handleInputChange}
-          required
-        />
+    <div className='flex flex-col items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8'>
+      <div className='flex flex-col justify-center  border-4 h-80 w-80 rounded-3xl bg-gradient-to-t from-primary to-secondary border-[#294b4e]'>
+        <div className='w-full'>
+          <h1 className='font-extrabold text-center text-xl text-pink'>
+            Dreamvision
+          </h1>
+          <div className='flex justify-center'>
+            <form
+              onSubmit={handleFormSubmission}
+              className='mt-8 space-y-6 px-auto'
+            >
+              <div>
+                <input
+                  id='input-username'
+                  type='text'
+                  name='username'
+                  placeholder='username'
+                  value={username}
+                  onChange={handleInputChange}
+                  required
+                  className='rounded-lg'
+                />
+              </div>
 
-        <label htmlFor='input-password'>Password</label>
-        <input
-          id='input-password'
-          type='password'
-          name='password'
-          placeholder='Password'
-          value={password}
-          onChange={handleInputChange}
-          required
-          minLength='8'
-        />
+              <input
+                id='input-password'
+                type='password'
+                name='password'
+                placeholder='Password'
+                value={password}
+                onChange={handleInputChange}
+                required
+                minLength='8'
+                className='rounded-lg'
+              />
 
-        {error && (
-          <div className='error-block'>
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
+              {error && (
+                <div className='error-block'>
+                  <p>There was an error submiting the form:</p>
+                  <p>{error.message}</p>
+                </div>
+              )}
+              <div>
+                <button
+                  className='h-12 text-white bg-pink w-52 rounded-2xl'
+                  type='submit'
+                >
+                  Sign up
+                </button>
+              </div>
+            </form>
           </div>
-        )}
-
-        <button className='button__submit' type='submit'>
-          Submit
-        </button>
-      </form>
+        </div>
+      </div>
     </div>
   );
 }
