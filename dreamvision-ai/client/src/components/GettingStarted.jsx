@@ -26,7 +26,7 @@ const GettingStarted = () => {
           <li className='ml-6'>Rembrandt</li>
         </div>
 
-        <div className='w-1/2 text-sm'>
+        <div className='w-1/2 text-sm '>
           <h3 className='my-3'>4.Finishing touches</h3>
           <p>
             if you want to make your image artistic, add "trending on

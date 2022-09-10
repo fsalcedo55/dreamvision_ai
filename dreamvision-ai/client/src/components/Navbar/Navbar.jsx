@@ -13,7 +13,7 @@ const Navbar = (props) => {
         {props.user ? (
           <div>
             <Link
-              to={PATHS.DASHBOARDPAGE}
+              to={PATHS.DASHBOARD}
               className='px-4 py-2 rounded-full cursor-pointer hover:bg-tertiary hover:text-primary'
             >
               Create

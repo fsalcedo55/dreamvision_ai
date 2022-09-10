@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-primary.container.mx-auto {
+  border: none !important;
+  border-radius: 0.5rem;
+}
+
+
 #picture-div:hover {
     animation: animate 20s linear;
   animation-iteration-count: infinite;
