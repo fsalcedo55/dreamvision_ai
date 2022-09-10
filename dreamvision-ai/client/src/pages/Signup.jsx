@@ -48,7 +48,7 @@ export default function Signup({ authenticate }) {
           id="input-username"
           type="text"
           name="username"
-          placeholder="Text"
+          placeholder="username"
           value={username}
           onChange={handleInputChange}
           required
