@@ -17,10 +17,16 @@ function HomePage(props) {
 
   return (
     <React.Fragment>
-      <div>
-        <h1> HOME PAGE</h1>
+      <div className='grid grid-cols-5 gap-4'>
         {allTheImages?.map((image) => {
-          return <img key={image} src={image} alt='all-the-images' />;
+          return (
+            <img
+              key={image}
+              src={image}
+              alt='all-the-images'
+              className='w-full h-64 rounded-xl'
+            />
+          );
         })}
       </div>
     </React.Fragment>
