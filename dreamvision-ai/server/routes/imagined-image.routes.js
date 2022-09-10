@@ -37,12 +37,36 @@ router.post('/saveImaginedImage', async (req, res) => {
         { new: true }
       );
       return res.status(201).json({ success: true, user });
-    } catch (err) {}
+    } catch (err) {
+      console.log({ err });
+    }
   });
 
   api.on('end', (data) => {
     console.log('Generating Complete', data);
   });
+});
+
+router.get('/getAllTheEntities', async (req, res) => {
+  console.log('Getting all the images');
+  try {
+    const users = await User.find({})
+      .then((users) => users)
+      .catch((err) => {
+        res.status(500).json({
+          success: false,
+          message: 'users were not found',
+          err,
+        });
+      });
+    const allTheImages = users.reduce((acc, user) => {
+      return [...acc, ...user.imaginedPics];
+    }, []);
+
+    res.status(200).json({ success: true, allTheImages });
+  } catch (err) {
+    console.log({ err });
+  }
 });
 
 module.exports = router;
