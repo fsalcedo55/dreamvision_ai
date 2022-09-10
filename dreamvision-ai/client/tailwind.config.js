@@ -9,7 +9,11 @@ module.exports = {
       pink: '#EE05F2',
       white: '#D9D9D9',
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'bg-image': "url('bg-image.png')",
+      }
+    },
   },
   plugins: [require('@tailwindcss/forms')],
 };
