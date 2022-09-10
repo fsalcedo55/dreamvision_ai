@@ -1,11 +1,66 @@
-import React from "react";
+import '../App.css';
+import React, { useState, useEffect } from 'react';
+import {
+  saveImaginedImage,
+  getUserImages,
+} from '../services/iamginator-service';
 
-const ProtectedPage = () => {
+function ProtectedPage(props) {
+  const [imaginedText, setImaginedText] = useState('');
+  const [userImages, setUserImages] = useState([]);
+  console.log({ props });
+  useEffect(() => {
+    const getAllUserImages = async () => {
+      const images = (await getUserImages(props.user.username)).data.userImages;
+      setUserImages(images);
+    };
+    getAllUserImages();
+  }, [props.user.username]);
+
+  const onChangeHandler = (e) => {
+    const value = e.target.value;
+    setImaginedText(value);
+  };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const { data } = await saveImaginedImage(imaginedText, {
+      userId: props.user._id,
+    });
+    const imageUrls = data.user.imaginedPics;
+    setImaginedText('');
+    setUserImages(() => {
+      return [...imageUrls].reverse();
+    });
+  };
+
   return (
-    <div>
-      <h1>This page is hyper protected!</h1>
-    </div>
+    <React.Fragment>
+      <div>
+        <div>
+          <form onSubmit={submitHandler}>
+            <label>
+              Your text
+              <input
+                type='text'
+                name='imaginedText'
+                onChange={onChangeHandler}
+                value={imaginedText}
+              />
+            </label>
+            <button type='submit'>Submit</button>
+          </form>
+        </div>
+      </div>
+      <div className='images-container'>
+        {userImages.length > 0 &&
+          userImages.map((imageUrl) => (
+            <div key={imageUrl}>
+              <img src={imageUrl} alt='users-pic' />
+            </div>
+          ))}
+      </div>
+    </React.Fragment>
   );
-};
+}
 
 export default ProtectedPage;
