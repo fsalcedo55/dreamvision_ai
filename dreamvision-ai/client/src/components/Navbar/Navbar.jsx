@@ -47,7 +47,7 @@ const Navbar = (props) => {
         {props.user ? (
           <div>
             <Link
-              to={PATHS.PROTECTEDPAGE}
+              to={PATHS.PROFILEPAGE}
               className='px-4 py-2 font-semibold text-white rounded-full hover:bg-secondary'
             >
               Profile
