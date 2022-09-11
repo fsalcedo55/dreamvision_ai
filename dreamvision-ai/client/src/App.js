@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import { getLoggedIn, logout } from './services/auth';
 import routes from './config/routes';
 import * as USER_HELPERS from './utils/userToken';
+import background from './background-image.png';
 
 
 
@@ -52,7 +53,7 @@ export default function App() {
     return <LoadingComponent />;
   }
   return (
-    <div className='min-h-screen bg-primary'>
+    <div className='min-h-screen bg-primary' style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', maxHeight: '100%' }}>
       <div className='mx-4'>
         <Navbar handleLogout={handleLogout} user={user} />
         <Routes>
