@@ -6,14 +6,17 @@ import * as PATHS from '../../utils/paths';
 const Navbar = (props) => {
   return (
     <nav className='flex items-center justify-between h-20'>
-      <Link to={PATHS.HOMEPAGE} className='text-xl text-pink'>
-        DreamVision.ai
+    <div className='flex flex-row'>
+    <img src='/App-logo.png' alt='applogo' className='w-10 h-6'/>
+      <Link to={PATHS.HOMEPAGE} className='font-extrabold text-xl text-pink '>
+        <p className='pl-2'>DreamVision.ai</p>
       </Link>
+</div>
       <div className='flex gap-6 text-lg font-semibold text-tertiary'>
         {props.user ? (
           <div>
             <Link
-              to={PATHS.PROTECTEDPAGE}
+              to={PATHS.DASHBOARD}
               className='px-4 py-2 rounded-full cursor-pointer hover:bg-tertiary hover:text-primary'
             >
               Create

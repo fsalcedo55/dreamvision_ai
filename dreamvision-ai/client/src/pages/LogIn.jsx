@@ -32,28 +32,35 @@ export default function LogIn({ authenticate }) {
       }
       USER_HELPERS.setUserToken(res.data.accessToken);
       authenticate(res.data.user);
-      navigate(PATHS.PROTECTEDPAGE);
+      navigate(PATHS.DASHBOARD);
     });
   }
 
   return (
-    <div className='flex items-center justify-center min-h-screen'>
-      <div className='flex-col border-4 h-80 w-80 rounded-3xl align-center'>
-        <h1 className='p-4 font-extrabold xt-2xl text-pink'>Dreamvision</h1>
-        <form onSubmit={handleFormSubmission} className='p-8 signup__form'>
-          <div className='p-4'>
-            <input
-              id='input-username'
-              type='text'
-              name='username'
-              placeholder='username'
-              value={username}
-              onChange={handleInputChange}
-              required
-              className='rounded-lg'
-            />
-          </div>
-          <div>
+    <div className='flex flex-col items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8'>
+      <div className='flex flex-col justify-center  border-4 h-80 w-80 rounded-3xl bg-gradient-to-t from-primary to-secondary border-[#294b4e]'>
+        <div className='w-full'>
+          <h1 className='font-extrabold text-center text-xl text-pink'>
+            Dreamvision.ai
+          </h1>
+        </div>
+        <div className='flex justify-center'>
+          <form
+            onSubmit={handleFormSubmission}
+            className='mt-8 space-y-6 px-auto'
+          >
+            <div>
+              <input
+                id='input-username'
+                type='text'
+                name='username'
+                placeholder='username'
+                value={username}
+                onChange={handleInputChange}
+                required
+                className='rounded-lg'
+              />
+            </div>
             <input
               id='input-password'
               type='password'
@@ -65,22 +72,23 @@ export default function LogIn({ authenticate }) {
               minLength='8'
               className='rounded-lg'
             />
-          </div>
-          {error && (
-            <div className='error-block'>
-              <p>There was an error submiting the form:</p>
-              <p>{error.message}</p>
+
+            {error && (
+              <div className='error-block'>
+                <p>There was an error submiting the form:</p>
+                <p>{error.message}</p>
+              </div>
+            )}
+            <div className=''>
+              <button
+                className='h-12 text-white bg-pink w-52 rounded-2xl'
+                type='submit'
+              >
+                Login
+              </button>
             </div>
-          )}
-          <div className='p-4'>
-            <button
-              className='h-12 text-white bg-pink w-52 rounded-2xl'
-              type='submit'
-            >
-              Login
-            </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
