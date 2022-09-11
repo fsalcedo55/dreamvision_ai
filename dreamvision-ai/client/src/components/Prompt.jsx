@@ -71,7 +71,6 @@ const Prompt = (props) => {
               value='7'
             ></input>
           </p> */}
-
           {/* <p className='h-20'>
             Diffusion Method{' '}
             <select
