@@ -26,7 +26,7 @@ const Dashboard = (props) => {
           ) : (
             <div className='flex flex-col gap-6 '>
               <img
-                src='https://maano.co.uk/wp-content/uploads/2021/02/placeholder-square.jpg'
+                src='https://rehabconceptspt.com/wp-content/uploads/2016/06/placeholder-640-square.jpg'
                 alt='dreamvision.ai'
                 width='512'
                 height='512'

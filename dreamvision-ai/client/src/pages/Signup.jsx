@@ -84,9 +84,8 @@ export default function Signup({ authenticate }) {
         </div>
       </div>
       {error && (
-        <div className='error-block'>
-          <p>There was an error submiting the form:</p>
-          <p>{error.message}</p>
+        <div className='error-block text-white'>
+          <alert>There was an error submiting the form: invalid credentials</alert>
         </div>
       )}
     </div>

@@ -85,10 +85,12 @@ export default function LogIn({ authenticate }) {
         </div>
       </div>
       {error && (
-              <div className='error-block'>
-                <alert>There was an error submiting the form: `${error.message}`</alert>
-              </div>
-            )}
+        <div className='error-block text-white'>
+          <alert>
+            There was an error submiting the form: invalid credentials
+          </alert>
+        </div>
+      )}
     </div>
   );
 }

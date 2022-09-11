@@ -5,7 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import { getLoggedIn, logout } from './services/auth';
 import routes from './config/routes';
 import * as USER_HELPERS from './utils/userToken';
-import background from './background-image.png';
+import background from './background-img.png';
 
 export default function App() {
   const [user, setUser] = useState(null);

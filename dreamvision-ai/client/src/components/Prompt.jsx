@@ -34,8 +34,8 @@ const Prompt = (props) => {
 
   return (
     <>
-      <div className='container relative p-5 mx-auto text-white shadow-xl bg-secondary rounded-xl'>
-        <h3 className='mb-2 text-lg font-semibold'>Prompt</h3>
+      <div className='container mx-auto bg-gradient-to-t from-primary to-secondary shadow-xl border-secondary border-2 p-5 rounded-xl relative text-white'>
+        <h3>Prompt</h3>
         <form type='submit'>
           <textarea
             className='container mx-auto text-white bg-primary'

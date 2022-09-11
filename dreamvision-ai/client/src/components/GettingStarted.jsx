@@ -1,11 +1,10 @@
 const GettingStarted = () => {
   return (
     <>
-      <div className=' mx-auto flex flex-col sm:flex-row border-4 p-2 rounded-xl border-secondary my-3 text-white text-opacity-60'>
-        <div className='min-w-fit md:text-sm text-xs w-1/2'>
-          <div>
-            <h1 className='my-3 text-gray-400 text-2xl'>Getting Started</h1>
-          </div>
+      <div className='flex border-2 p-4 rounded-xl border-secondary bg-gradient-to-t from-primary to-secondary my-3 text-white text-opacity-60'>
+        <div className='min-w-fit text-sm w-1/2'>
+          <h1 className='my-3 text-gray-400'>Getting Started</h1>
+
           {/* <div className='flex-col'> */}
           <h3 className='ml-3 my-3 text-white font-bold'>1. Raw prompt</h3>
 
