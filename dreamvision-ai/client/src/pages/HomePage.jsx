@@ -9,6 +9,7 @@ function HomePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
+  const [currentUserName, setCurrentUserName] = useState('');
 
   useEffect(() => {
     const getAllTheImages = async () => {
@@ -17,7 +18,7 @@ function HomePage(props) {
     };
     getAllTheImages();
   }, []);
-
+  console.log({ allTheImages });
   return (
     <div>
       {showModal && (
@@ -28,7 +29,7 @@ function HomePage(props) {
           <ModalCard
             imgSrc={currentImage}
             currentPrompt={currentPrompt}
-            user={props.user}
+            user={currentUserName}
           />
         </div>
       )}
@@ -50,6 +51,7 @@ function HomePage(props) {
                       setCurrentImage(imageDetails.imaginedPics.picUrl);
                       setShowModal(true);
                       setCurrentPrompt(imageDetails.imaginedPics.prompt);
+                      setCurrentUserName(imageDetails.username);
                     }}
                   />
                   <div className='invisible p-2 text-sm font-semibold text-center text-white truncate rounded-b-lg cursor-pointer group-hover:visible'>

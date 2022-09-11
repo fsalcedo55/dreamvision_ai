@@ -26,13 +26,7 @@ const Prompt = (props) => {
         user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1]
           .prompt,
     });
-    console.log(
-      user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].picUrl
-    );
 
-    console.log(
-      user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].prompt
-    );
     props.setImaginedText('');
     setPrompt('');
     setIsLoading(false);

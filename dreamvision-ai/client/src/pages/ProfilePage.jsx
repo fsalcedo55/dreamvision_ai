@@ -9,6 +9,7 @@ function ProfilePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
+  const [currentUserName, setCurrentUserName] = useState('');
 
   useEffect(() => {
     const getAllUserImages = async () => {
@@ -29,7 +30,7 @@ function ProfilePage(props) {
         >
           <ModalCard
             imgSrc={currentImage}
-            user={props.user}
+            user={currentUserName}
             currentPrompt={currentPrompt}
           />
         </div>
@@ -52,6 +53,7 @@ function ProfilePage(props) {
                       setCurrentImage(details.picUrl);
                       setShowModal(true);
                       setCurrentPrompt(details.prompt);
+                      setCurrentUserName(details.username);
                     }}
                   />
                   <div className='invisible p-2 text-sm font-semibold text-center text-white truncate rounded-b-lg cursor-pointer group-hover:visible'>
