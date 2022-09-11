@@ -8,7 +8,7 @@ const Dashboard = (props) => {
   const [imaginedText, setImaginedText] = useState('');
 
   return (
-    <div className='flex gap-5 '>
+    <div className='flex gap-5   '>
       <div className='w-1/2 '>
         <Prompt
           setPictureDetails={setPictureDetails}
