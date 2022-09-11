@@ -11,7 +11,6 @@ function HomePage(props) {
   const [currentPrompt, setCurrentPrompt] = useState('');
 
   useEffect(() => {
-    console.log('effect in use');
     const getAllTheImages = async () => {
       const allImages = await getAllTheEntities();
       console.log(allImages);
