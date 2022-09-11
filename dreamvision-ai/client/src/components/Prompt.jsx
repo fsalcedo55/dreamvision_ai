@@ -9,7 +9,6 @@ const Prompt = (props) => {
   const onChangeHandler = (e) => {
     const value = e.target.value;
     setPrompt(value);
-    // props.setImaginedText(value);
   };
 
   const submitHandler = async (e) => {
@@ -18,8 +17,6 @@ const Prompt = (props) => {
     const user = await saveImaginedImage(prompt, {
       userId: props.props.user._id,
     });
-
-    console.log('THE IMAGES', user.data.user.imaginedPics);
 
     props.setPictureDetails({
       picUrl:
@@ -36,11 +33,8 @@ const Prompt = (props) => {
     console.log(
       user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].prompt
     );
-    // const imageUrls = data.user.imaginedPics;
     props.setImaginedText('');
-    // setUserImages(() => {
-    //   return [...imageUrls].reverse();
-    // });
+    setPrompt('');
     setIsLoading(false);
   };
 

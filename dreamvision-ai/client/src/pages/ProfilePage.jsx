@@ -14,6 +14,7 @@ function ProfilePage(props) {
     const getAllUserImages = async () => {
       const userDetailsList = (await getUserImages(props.user.username)).data
         .userImages;
+      userDetailsList.reverse();
       setUserDetails(userDetailsList);
     };
     getAllUserImages();

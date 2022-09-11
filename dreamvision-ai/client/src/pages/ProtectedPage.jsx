@@ -8,7 +8,7 @@ import {
 function ProtectedPage(props) {
   const [imaginedText, setImaginedText] = useState('');
   const [userImages, setUserImages] = useState([]);
-  console.log({ props });
+
   useEffect(() => {
     const getLastUserImage = async () => {
       const images = (await getUserImages(props.user.username)).data.userImages;
