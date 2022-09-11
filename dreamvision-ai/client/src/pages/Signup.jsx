@@ -26,11 +26,7 @@ export default function Signup({ authenticate }) {
     };
     signup(credentials).then((res) => {
       if (!res.status) {
-        // unsuccessful signup
-        console.error('Signup was unsuccessful: ', res);
-        return setError({
-          message: 'Signup was unsuccessful! Please check the console.',
-        });
+        alert('Username is taken');
       }
       // successful signup
       USER_HELPERS.setUserToken(res.data.accessToken);

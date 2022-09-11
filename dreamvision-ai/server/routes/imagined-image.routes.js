@@ -15,17 +15,13 @@ router.post('/saveImaginedImage', async (req, res) => {
   const localStoragePath = new LocalStorage('./scratch')._location;
 
   const { userPrompt } = req.body;
- 
-  
-  
-  const { userId } = req.body.userId;
 
+  const { userId } = req.body.userId;
 
   const api = stability.generate({
     prompt: `${userPrompt}`,
     apiKey: process.env.DREAMSTUDIO_API_KEY,
     outDir: localStoragePath,
-   
   });
 
   api.on('image', async ({ buffer, filePath }) => {
@@ -38,7 +34,12 @@ router.post('/saveImaginedImage', async (req, res) => {
       const user = await User.findByIdAndUpdate(
         preparedUserId,
         {
-          $push: { imaginedPics: {picUrl: pathToImageInCloudinary.url, prompt:userPrompt} },
+          $push: {
+            imaginedPics: {
+              picUrl: pathToImageInCloudinary.url,
+              prompt: userPrompt,
+            },
+          },
         },
         { new: true }
       );
@@ -64,10 +65,21 @@ router.get('/getAllTheEntities', async (req, res) => {
       });
     });
 
-  const allTheImages = users.reduce((acc, user) => {
-    return [...acc, ...user.imaginedPics];
-  }, []);
-  res.status(200).json({ success: true, allTheImages });
+  const usersAndImages = [];
+  for (let i = 0; i < users.length; i++) {
+    for (let j = 0; j < users[i].imaginedPics.length; j++) {
+      usersAndImages.push({
+        username: users[i].username,
+        imaginedPics: {
+          picUrl: users[i].imaginedPics[j].picUrl,
+          prompt:
+            users[i].imaginedPics[j].prompt[0].toUpperCase() +
+            users[i].imaginedPics[j].prompt.slice(1),
+        },
+      });
+    }
+  }
+  res.status(200).json({ success: true, usersAndImages });
 });
 
 router.get('/getAllImagesOfThisUser/:username', async (req, res) => {

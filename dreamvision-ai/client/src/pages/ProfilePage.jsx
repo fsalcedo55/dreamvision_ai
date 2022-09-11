@@ -9,11 +9,13 @@ function ProfilePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
+  const [currentUserName, setCurrentUserName] = useState('');
 
   useEffect(() => {
     const getAllUserImages = async () => {
       const userDetailsList = (await getUserImages(props.user.username)).data
         .userImages;
+      userDetailsList.reverse();
       setUserDetails(userDetailsList);
     };
     getAllUserImages();
@@ -28,7 +30,7 @@ function ProfilePage(props) {
         >
           <ModalCard
             imgSrc={currentImage}
-            user={props.user}
+            user={currentUserName}
             currentPrompt={currentPrompt}
           />
         </div>
@@ -37,18 +39,27 @@ function ProfilePage(props) {
         <div className='grid grid-cols-5 gap-4'>
           {userDetails?.map((details) => {
             return (
-              <div className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-900'>
-                <img
-                  key={details.picUrl}
-                  src={details.picUrl}
-                  alt='all-the-images'
-                  className='w-full h-full rounded-xl'
-                  onClick={() => {
-                    setCurrentImage(details.picUrl);
-                    setShowModal(true);
-                    setCurrentPrompt(details.prompt);
-                  }}
-                />
+              <div
+                id='picture-div'
+                className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-900'
+              >
+                <div className='group'>
+                  <img
+                    key={details.picUrl}
+                    src={details.picUrl}
+                    alt='all-the-images'
+                    className='w-full h-full rounded-xl'
+                    onClick={() => {
+                      setCurrentImage(details.picUrl);
+                      setShowModal(true);
+                      setCurrentPrompt(details.prompt);
+                      setCurrentUserName(details.username);
+                    }}
+                  />
+                  <div className='invisible p-2 text-sm font-semibold text-center text-white truncate rounded-b-lg cursor-pointer group-hover:visible'>
+                    {details.prompt}
+                  </div>
+                </div>
               </div>
             );
           })}

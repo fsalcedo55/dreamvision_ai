@@ -6,3 +6,76 @@
   border: none !important;
   border-radius: 0.5rem;
 }
+
+
+#picture-div:hover {
+    animation: animate 20s linear;
+  animation-iteration-count: infinite;
+  border-radius: 12px;
+}
+
+@keyframes animate {
+    0% {
+      box-shadow: 0 2px 30px 0 green;
+    }
+    5% {
+      box-shadow: 0 2px 30px 0 red;
+    }
+    10% {
+      box-shadow: 0 2px 30px 0 Aquamarine;
+    }
+    15% {
+      box-shadow: 0 2px 30px 0 seashell;
+    }
+    20% {
+      box-shadow: 0 2px 30px 0 maroon;
+    }
+    25% {
+      box-shadow: 0 2px 30px 0 green;
+    }
+    30% {
+      box-shadow: 0 2px 30px 0 darkorange;
+    }
+    35% {
+      box-shadow: 0 2px 30px 0 deeppink;
+    }
+    40% {
+      box-shadow: 0 2px 30px 0 Snow;
+    }
+    45% {
+      box-shadow: 0 2px 30px 0 IndianRed;
+    }
+    50% {
+      box-shadow: 0 2px 30px 0 Cornsilk;
+    }
+    55% {
+      box-shadow: 0 2px 30px 0 GreenYellow;
+    }
+    60% {
+      box-shadow: 0 2px 30px 0 Teal;
+    }
+    65% {
+      box-shadow: 0 2px 30px 0 NavajoWhite;
+    }
+    70% {
+      box-shadow: 0 2px 30px 0 YellowGreen;
+    }
+    75% {
+      box-shadow: 0 2px 30px 0 DarkTurquoise;
+    }
+    80% {
+      box-shadow: 0 2px 30px 0 green;
+    }
+    85% {
+      box-shadow: 0 2px 30px 0 Plum;
+    }
+    90% {
+      box-shadow: 0 2px 30px 0 ForestGreen;
+    }
+    95% {
+      box-shadow: 0 2px 30px 0 Purple;
+    }
+    100% {
+      box-shadow: 0 2px 30px 0 green;
+    }
+  }

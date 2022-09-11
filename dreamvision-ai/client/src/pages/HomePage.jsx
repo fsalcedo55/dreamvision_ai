@@ -9,16 +9,15 @@ function HomePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
+  const [currentUserName, setCurrentUserName] = useState('');
 
   useEffect(() => {
     const getAllTheImages = async () => {
-      const allImages = await getAllTheEntities();
-      console.log(allImages);
-      setAllTheImages(allImages.data.allTheImages.reverse());
+      const usersAndImagesList = await getAllTheEntities();
+      setAllTheImages(usersAndImagesList.data.usersAndImages.reverse());
     };
     getAllTheImages();
   }, []);
-
   return (
     <div>
       {showModal && (
@@ -29,26 +28,35 @@ function HomePage(props) {
           <ModalCard
             imgSrc={currentImage}
             currentPrompt={currentPrompt}
-            user={props.user}
+            user={currentUserName}
           />
         </div>
       )}
       <div className='z-10'>
         <div className='grid grid-cols-5 gap-4'>
-          {allTheImages?.map((image) => {
+          {allTheImages?.map((imageDetails) => {
             return (
-              <div className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-indigo-900'>
-                <img
-                  key={image.picUrl}
-                  src={image.picUrl}
-                  alt='all-the-images'
-                  className='w-full h-full cursor-pointer rounded-xl'
-                  onClick={() => {
-                    setCurrentImage(image.picUrl);
-                    setShowModal(true);
-                    setCurrentPrompt(image.prompt);
-                  }}
-                />
+              <div
+                id='picture-div'
+                className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-white'
+              >
+                <div className='group'>
+                  <img
+                    key={imageDetails.imaginedPics.picUrl}
+                    src={imageDetails.imaginedPics.picUrl}
+                    alt='all-the-images'
+                    className='w-full h-full cursor-pointer rounded-xl'
+                    onClick={() => {
+                      setCurrentImage(imageDetails.imaginedPics.picUrl);
+                      setShowModal(true);
+                      setCurrentPrompt(imageDetails.imaginedPics.prompt);
+                      setCurrentUserName(imageDetails.username);
+                    }}
+                  />
+                  <div className='invisible p-2 text-sm font-semibold text-center text-white truncate rounded-b-lg cursor-pointer group-hover:visible'>
+                    {imageDetails.imaginedPics.prompt}
+                  </div>
+                </div>
               </div>
             );
           })}

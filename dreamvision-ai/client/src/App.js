@@ -52,7 +52,7 @@ export default function App() {
   }
   return (
     <div
-      className='min-h-screen bg-primary'
+      className='min-h-screen pb-10 bg-fixed bg-primary'
       style={{
         backgroundImage: `url(${background})`,
         backgroundRepeat: 'no-repeat',

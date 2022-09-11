@@ -40,7 +40,6 @@ export const getAllTheEntities = async () => {
 };
 
 export const getUserImages = async (username) => {
-  console.log({ username });
   return dreamVisionService
     .get(`/getAllImagesOfThisUser/${username}`)
     .then(successStatus)
