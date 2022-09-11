@@ -47,7 +47,7 @@ const Prompt = (props) => {
   return (
     <>
       <div className='container relative p-5 mx-auto text-white shadow-xl bg-secondary rounded-xl'>
-        <h3>Prompt</h3>
+        <h3 className='mb-2 text-lg font-semibold'>Prompt</h3>
         <form type='submit'>
           <textarea
             className='container mx-auto text-white bg-primary'
@@ -58,7 +58,7 @@ const Prompt = (props) => {
             value={prompt}
             onChange={onChangeHandler}
           />
-          <p>
+          {/* <p>
             CFG Scale Factor{' '}
             <input
               className='text-center text-white rounded-lg bg-primary'
@@ -69,9 +69,9 @@ const Prompt = (props) => {
               max='10'
               value='7'
             ></input>
-          </p>
+          </p> */}
 
-          <p className='h-20'>
+          {/* <p className='h-20'>
             Diffusion Method{' '}
             <select
               name='choices'
@@ -85,22 +85,24 @@ const Prompt = (props) => {
               <option value='k_dpm_2'>k_dpm_2</option>
               <option value='k_dpm_2_ancestral'>k_dpm_2_ancestral</option>
             </select>
-          </p>
-          <button
-            className='absolute w-40 p-1 mb-2 font-bold text-white rounded-lg bg-pink bottom-1 right-5'
-            onClick={submitHandler}
-          >
-            {isLoading ? (
-              <div className='flex items-center justify-center gap-2'>
-                <span className='animate-spin'>
-                  <ImSpinner />
-                </span>
-                <p>Generating...</p>
-              </div>
-            ) : (
-              <p>Envision</p>
-            )}
-          </button>
+          </p> */}
+          <div className='flex justify-end'>
+            <button
+              className='w-40 p-1 mt-1 font-bold text-white rounded-lg bg-pink bottom-1 right-5'
+              onClick={submitHandler}
+            >
+              {isLoading ? (
+                <div className='flex items-center justify-center gap-2'>
+                  <span className='animate-spin'>
+                    <ImSpinner />
+                  </span>
+                  <p>Generating...</p>
+                </div>
+              ) : (
+                <p>Envision</p>
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </>

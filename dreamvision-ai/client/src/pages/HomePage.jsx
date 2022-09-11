@@ -9,6 +9,7 @@ function HomePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
+  const [inHover, setInHover] = useState(false);
 
   console.log(allTheImages);
 
