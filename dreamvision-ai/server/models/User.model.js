@@ -14,7 +14,13 @@ const userSchema = new Schema({
   firstName: { type: String, required: false },
   lastName: { type: String, required: false },
   // profilePic: { type: String, required: false },
-  imaginedPics: [{ type: String, required: false }],
+ imaginedPics: [{
+    picUrl: { type: String, required: false },
+    prompt: {
+      type: String,
+      required: false,
+    },
+  }],
 });
 
 userSchema.plugin(require('mongoose-autopopulate'));

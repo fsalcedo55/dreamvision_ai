@@ -1,6 +1,7 @@
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-export default function ModalCard({ imgSrc }) {
+export default function ModalCard({ imgSrc, currentPrompt, user }) {
+  console.log(user);
   return (
     <div>
       <div className='relative max-w-xl p-8 max-h-fit bg-gradient-to-b from-[#04ADBF] to-[#012840] rounded-3xl border-4 border-[#B6ECF2]'>
@@ -24,17 +25,13 @@ export default function ModalCard({ imgSrc }) {
               />
             </div>
             <div className='pl-4'>
-              <p className='text-white'>Image created by `User`</p>
+              <p className='text-white'>
+                Image created by <strong>{user.username}</strong>
+              </p>
             </div>
           </div>
           <div className='pt-2'>
-            <p className='text-xs text-white'>
-              Close-up of Viking King emerging from wet black mud + Dark metal
-              helmet with two large black horns on the sides of the helmet +
-              dark warpaint + scruffy black beard + angry expression + scar on
-              face + Viking Axe + cinematic lighting, volumetric rays, moody,
-              wet, dripping mud
-            </p>
+            <p className='text-xs text-white'>{currentPrompt}</p>
           </div>
         </div>
       </div>

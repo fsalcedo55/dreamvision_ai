@@ -2,28 +2,40 @@ import { useState } from 'react';
 import { saveImaginedImage } from '../services/iamginator-service';
 
 const Prompt = (props) => {
-  const [imaginedText, setImaginedText] = useState('');
-
+  const [prompt, setPrompt] = useState('');
   const onChangeHandler = (e) => {
     const value = e.target.value;
-    setImaginedText(value);
+    setPrompt(value);
+    // props.setImaginedText(value);
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const user = await saveImaginedImage(imaginedText, {
+    const user = await saveImaginedImage(prompt, {
       userId: props.props.user._id,
     });
     console.log('THE IMAGES', user.data.user.imaginedPics);
-    props.setImages(user.data.user.imaginedPics);
+    props.setPictureDetails({
+      picUrl:
+        user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1]
+          .picUrl,
+      prompt:
+        user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1]
+          .prompt,
+    });
+    console.log(
+      user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].picUrl
+    );
 
+    console.log(
+      user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].prompt
+    );
     // const imageUrls = data.user.imaginedPics;
-    setImaginedText('');
+    props.setImaginedText('');
     // setUserImages(() => {
     //   return [...imageUrls].reverse();
     // });
   };
 
-  console.log(imaginedText);
   return (
     <>
       <div className='container mx-auto  bg-secondary shadow-xl p-5 rounded-xl relative text-white'>
@@ -36,7 +48,7 @@ const Prompt = (props) => {
             rows='4'
             cols='50'
             text-white
-            value={imaginedText}
+            value={prompt}
             onChange={onChangeHandler}
           />
           <p>
@@ -67,6 +79,7 @@ const Prompt = (props) => {
               <option value='k_dpm_2_ancestral'>k_dpm_2_ancestral</option>
             </select>
           </p>
+
           <button
             className='bg-pink rounded-lg absolute bottom-1 right-5 w-32 p-1 text-white mb-2 font-bold'
             onClick={submitHandler}
