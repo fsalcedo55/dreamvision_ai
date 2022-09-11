@@ -1,7 +1,7 @@
 const GettingStarted = () => {
   return (
     <>
-      <div className='flex border-4 p-4 rounded-xl border-secondary my-3 text-white text-opacity-60'>
+      <div className='flex border-2 p-4 rounded-xl border-secondary bg-gradient-to-t from-primary to-secondary my-3 text-white text-opacity-60'>
         <div className='min-w-fit text-sm w-1/2'>
           <h1 className='my-3 text-gray-400'>Getting Started</h1>
 
