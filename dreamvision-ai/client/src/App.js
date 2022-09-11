@@ -7,7 +7,7 @@ import routes from './config/routes';
 import * as USER_HELPERS from './utils/userToken';
 import background from './background-image.png';
 
-import Dashboard from "./pages/Dashboard"
+
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -60,7 +60,7 @@ export default function App() {
           {routes({ user, authenticate, handleLogout }).map((route) => (
             <Route key={route.path} path={route.path} element={route.element} />
           ))}
-          <Route path='/dashboard' element={<Dashboard/>}/>
+          
         
         </Routes>
       </div>

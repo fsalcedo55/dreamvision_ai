@@ -13,13 +13,19 @@ const Session = require('../models/Session.model');
 
 router.post('/saveImaginedImage', async (req, res) => {
   const localStoragePath = new LocalStorage('./scratch')._location;
+
   const { userPrompt } = req.body;
+ 
+  
+  
   const { userId } = req.body.userId;
+
 
   const api = stability.generate({
     prompt: `${userPrompt}`,
     apiKey: process.env.DREAMSTUDIO_API_KEY,
     outDir: localStoragePath,
+   
   });
 
   api.on('image', async ({ buffer, filePath }) => {
@@ -32,7 +38,7 @@ router.post('/saveImaginedImage', async (req, res) => {
       const user = await User.findByIdAndUpdate(
         preparedUserId,
         {
-          $push: { imaginedPics: pathToImageInCloudinary.url },
+          $push: { imaginedPics: {picUrl: pathToImageInCloudinary.url, prompt:userPrompt} },
         },
         { new: true }
       );
