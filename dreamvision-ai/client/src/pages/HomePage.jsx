@@ -7,7 +7,6 @@ function HomePage(props) {
   const [allTheImages, setAllTheImages] = useState([]);
 
   useEffect(() => {
-    console.log('effect in use');
     const getAllTheImages = async () => {
       const allImages = await getAllTheEntities();
       setAllTheImages(allImages.data.allTheImages.reverse());
