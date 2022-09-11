@@ -25,17 +25,9 @@ export default function ModalCard({ imgSrc, currentPrompt, user }) {
               />
             </div>
             <div className='pl-4'>
-              {user ? (
-                <p className='text-white'>
-                  Image created by <strong>{user.username}</strong>
-                </p>
-              ) : (
-                <p className='text-white'>
-                  <strong>
-                    Sign up for an account to create your own images!
-                  </strong>
-                </p>
-              )}
+              <p className='text-white'>
+                Image created by <strong>{user.username}</strong>
+              </p>
             </div>
           </div>
           <div className='pt-2'>

@@ -65,10 +65,22 @@ router.get('/getAllTheEntities', async (req, res) => {
       });
     });
 
-  const allTheImages = users.reduce((acc, user) => {
-    return [...acc, ...user.imaginedPics];
-  }, []);
-  res.status(200).json({ success: true, allTheImages });
+  const usersAndImages = [];
+  for (let i = 0; i < users.length; i++) {
+    for (let j = 0; j < users[i].imaginedPics.length; j++) {
+      usersAndImages.push({
+        username: users[i].username,
+        imaginedPics: {
+          picUrl: users[i].imaginedPics[j].picUrl,
+          prompt:
+            users[i].imaginedPics[j].prompt[0].toUpperCase() +
+            users[i].imaginedPics[j].prompt.slice(1),
+        },
+      });
+    }
+  }
+
+  res.status(200).json({ success: true, usersAndImages });
 });
 
 router.get('/getAllImagesOfThisUser/:username', async (req, res) => {

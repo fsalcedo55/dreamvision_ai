@@ -10,13 +10,10 @@ function HomePage(props) {
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
 
-  console.log(allTheImages);
-
   useEffect(() => {
     const getAllTheImages = async () => {
-      const allImages = await getAllTheEntities();
-      console.log(allImages);
-      setAllTheImages(allImages.data.allTheImages.reverse());
+      const usersAndImagesList = await getAllTheEntities();
+      setAllTheImages(usersAndImagesList.data.usersAndImages.reverse());
     };
     getAllTheImages();
   }, []);
@@ -37,7 +34,7 @@ function HomePage(props) {
       )}
       <div className='z-10'>
         <div className='grid grid-cols-5 gap-4'>
-          {allTheImages?.map((image) => {
+          {allTheImages?.map((imageDetails) => {
             return (
               <div
                 id='picture-div'
@@ -45,18 +42,18 @@ function HomePage(props) {
               >
                 <div className='group'>
                   <img
-                    key={image.picUrl}
-                    src={image.picUrl}
+                    key={imageDetails.imaginedPics.picUrl}
+                    src={imageDetails.imaginedPics.picUrl}
                     alt='all-the-images'
                     className='w-full h-full cursor-pointer rounded-xl'
                     onClick={() => {
-                      setCurrentImage(image.picUrl);
+                      setCurrentImage(imageDetails.imaginedPics.picUrl);
                       setShowModal(true);
-                      setCurrentPrompt(image.prompt);
+                      setCurrentPrompt(imageDetails.imaginedPics.prompt);
                     }}
                   />
                   <div className='invisible p-2 text-sm font-semibold text-center text-white truncate rounded-b-lg cursor-pointer group-hover:visible'>
-                    {image.prompt}
+                    {imageDetails.imaginedPics.prompt}
                   </div>
                 </div>
               </div>
