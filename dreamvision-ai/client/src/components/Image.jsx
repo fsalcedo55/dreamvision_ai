@@ -1,9 +1,9 @@
 const Image = (props) => {
-  const { image, imaginedText } = props;
+  const { picUrl, prompt } = props.pictureDetails;
   return (
     <div>
-      <img src={image} alt='heyhey' width='512' height='512' />
-      <p className='text-center'>{imaginedText}</p>
+      <img src={picUrl} alt='heyhey' width='512' height='512' />
+      <p className='text-center'>{prompt}</p>
     </div>
   );
 };

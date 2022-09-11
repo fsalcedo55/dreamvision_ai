@@ -14,16 +14,27 @@ const Prompt = (props) => {
       userId: props.props.user._id,
     });
     console.log('THE IMAGES', user.data.user.imaginedPics);
-    props.setImages(user.data.user.imaginedPics);
+    props.setPictureDetails({
+      picUrl:
+        user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1]
+          .picUrl,
+      prompt:
+        user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1]
+          .prompt,
+    });
+    console.log(
+      user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].picUrl
+    );
 
+    console.log(
+      user.data.user.imaginedPics[user.data.user.imaginedPics.length - 1].prompt
+    );
     // const imageUrls = data.user.imaginedPics;
     props.setImaginedText('');
     // setUserImages(() => {
     //   return [...imageUrls].reverse();
     // });
   };
-  console.log(props);
-  console.log(props.imaginedText);
 
   return (
     <>

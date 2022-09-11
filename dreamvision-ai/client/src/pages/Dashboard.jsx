@@ -4,14 +4,14 @@ import Image from '../components/Image';
 import { useState } from 'react';
 
 const Dashboard = (props) => {
-  const [images, setImages] = useState([]);
+  const [pictureDetails, setPictureDetails] = useState({});
   const [imaginedText, setImaginedText] = useState('');
 
   return (
     <div className='flex gap-5 '>
       <div className='w-1/2 '>
         <Prompt
-          setImages={setImages}
+          setPictureDetails={setPictureDetails}
           props={props}
           setImaginedText={setImaginedText}
           imaginedText={imaginedText}
@@ -20,7 +20,7 @@ const Dashboard = (props) => {
         <GettingStarted />
       </div>
       <div className='w-1/2'>
-        <Image image={images[images.length - 1]} imaginedText={imaginedText} />
+        <Image pictureDetails={pictureDetails} />
       </div>
     </div>
   );
