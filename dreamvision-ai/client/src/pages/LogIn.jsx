@@ -41,7 +41,7 @@ export default function LogIn({ authenticate }) {
       <div className='flex flex-col justify-center  border-4 h-80 w-80 rounded-3xl bg-gradient-to-t from-primary to-secondary border-[#294b4e]'>
         <div className='w-full'>
           <h1 className='font-extrabold text-center text-xl text-pink'>
-            Dreamvision
+            Dreamvision.ai
           </h1>
         </div>
         <div className='flex justify-center'>
