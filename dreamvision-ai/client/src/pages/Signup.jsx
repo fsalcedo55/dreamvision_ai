@@ -40,11 +40,11 @@ export default function Signup({ authenticate }) {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8'>
-      <div className='flex flex-col justify-center  border-4 h-80 w-80 rounded-3xl bg-gradient-to-t from-primary to-secondary border-[#294b4e]'>
+    <div className='flex flex-col items-center pt-32 min-h-screen px-4 py-12 sm:px-6 lg:px-8'>
+      <div className='flex flex-col justify-center border-4 h-80 w-80 rounded-3xl bg-gradient-to-t from-primary to-secondary border-[#294b4e]'>
         <div className='w-full'>
           <h1 className='font-extrabold text-center text-xl text-pink'>
-            Dreamvision
+            Dreamvision.ai
           </h1>
           <div className='flex justify-center'>
             <form
@@ -75,13 +75,6 @@ export default function Signup({ authenticate }) {
                 minLength='8'
                 className='rounded-lg'
               />
-
-              {error && (
-                <div className='error-block'>
-                  <p>There was an error submiting the form:</p>
-                  <p>{error.message}</p>
-                </div>
-              )}
               <div>
                 <button
                   className='h-12 text-white bg-pink w-52 rounded-2xl'
@@ -94,6 +87,12 @@ export default function Signup({ authenticate }) {
           </div>
         </div>
       </div>
+      {error && (
+        <div className='error-block'>
+          <p>There was an error submiting the form:</p>
+          <p>{error.message}</p>
+        </div>
+      )}
     </div>
   );
 }

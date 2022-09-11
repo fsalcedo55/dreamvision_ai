@@ -1,9 +1,15 @@
 const Image = (props) => {
   const { picUrl, prompt } = props.pictureDetails;
   return (
-    <div>
-      <img src={picUrl} alt='heyhey' width='512' height='512' />
-      <p className='text-center'>{prompt}</p>
+    <div className='flex flex-col gap-6'>
+      <img
+        src={picUrl}
+        alt='heyhey'
+        width='512'
+        height='512'
+        className='rounded-xl'
+      />
+      <p className='text-xl font-semibold text-center text-white'>{prompt}</p>
     </div>
   );
 };
