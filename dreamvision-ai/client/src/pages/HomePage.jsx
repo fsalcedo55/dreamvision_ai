@@ -18,7 +18,6 @@ function HomePage(props) {
     };
     getAllTheImages();
   }, []);
-  console.log({ allTheImages });
   return (
     <div>
       {showModal && (

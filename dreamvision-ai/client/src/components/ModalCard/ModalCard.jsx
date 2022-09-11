@@ -1,7 +1,6 @@
 import { AiFillCloseCircle } from 'react-icons/ai';
 
 export default function ModalCard({ imgSrc, currentPrompt, user }) {
-  // console.log(user);
   return (
     <div>
       <div className='relative max-w-xl p-8 max-h-fit bg-gradient-to-b from-[#04ADBF] to-[#012840] rounded-3xl border-4 border-[#B6ECF2]'>
