@@ -1,7 +1,7 @@
 const Prompt = () => {
   return (
     <>
-      <div class='w-full md:container bg-secondary shadow-xl p-5 rounded-xl relative text-white'>
+      <div className='w-full md:container bg-secondary shadow-xl p-5 rounded-xl relative text-white'>
         <h3>Prompt</h3>
         <textarea
           className='bg-primary'
