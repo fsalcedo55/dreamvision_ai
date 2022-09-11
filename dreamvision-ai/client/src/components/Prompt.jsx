@@ -57,6 +57,7 @@ const Prompt = (props) => {
             cols='50'
             value={prompt}
             onChange={onChangeHandler}
+            placeholder='e.g. anime still of a highly detailed night cyberpunk city life, bladerunner style, art by satoshi kon and studio ghibli, cinematic lighting'
           />
           {/* <p>
             CFG Scale Factor{' '}

@@ -51,7 +51,14 @@ export default function App() {
     return <LoadingComponent />;
   }
   return (
-    <div className='min-h-screen bg-primary' style={{ backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', maxHeight: '100%' }}>
+    <div
+      className='min-h-screen pb-10 bg-fixed bg-primary'
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundRepeat: 'no-repeat',
+        maxHeight: '100%',
+      }}
+    >
       <div className='mx-4'>
         <Navbar handleLogout={handleLogout} user={user} />
         <Routes>

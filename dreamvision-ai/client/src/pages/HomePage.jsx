@@ -9,7 +9,6 @@ function HomePage(props) {
   const [currentImage, setCurrentImage] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [currentPrompt, setCurrentPrompt] = useState('');
-  const [inHover, setInHover] = useState(false);
 
   console.log(allTheImages);
 
@@ -44,17 +43,22 @@ function HomePage(props) {
                 id='picture-div'
                 className='transition duration-500 transform hover:scale-105 hover:shadow-lg hover:shadow-white'
               >
-                <img
-                  key={image.picUrl}
-                  src={image.picUrl}
-                  alt='all-the-images'
-                  className='w-full h-full cursor-pointer rounded-xl'
-                  onClick={() => {
-                    setCurrentImage(image.picUrl);
-                    setShowModal(true);
-                    setCurrentPrompt(image.prompt);
-                  }}
-                />
+                <div className='group'>
+                  <img
+                    key={image.picUrl}
+                    src={image.picUrl}
+                    alt='all-the-images'
+                    className='w-full h-full cursor-pointer rounded-xl'
+                    onClick={() => {
+                      setCurrentImage(image.picUrl);
+                      setShowModal(true);
+                      setCurrentPrompt(image.prompt);
+                    }}
+                  />
+                  <div className='invisible p-2 text-sm font-semibold text-center text-white truncate rounded-b-lg cursor-pointer group-hover:visible'>
+                    {image.prompt}
+                  </div>
+                </div>
               </div>
             );
           })}
